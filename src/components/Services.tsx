@@ -123,38 +123,42 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 relative bg-transparent">
+    <section id="services" className="py-24 relative bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#ffb86b]/20 via-[#ff6a3d]/20 to-[#ffb86b]/20 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 shadow">
-            <MessageCircle className="h-4 w-4" />
-            Services
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">Our Services</h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-10">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="bg-gradient-to-br from-[#23232b]/80 via-[#18181b]/80 to-[#ff6a3d]/10 border border-white/10 rounded-2xl p-10 hover:shadow-2xl transition-all duration-300 group flex flex-col gap-6"
+        <div className="text-left mb-16">
+            <button 
+            // variant="outline" 
+            className="mb-4 border border-gray-100/10 rounded-[10px] py-1 px-2 bg-gradient-to-r from-orange-300 from-20% to-white bg-clip-text text-transparent hover:bg-white/10 text-sm"
             >
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#ffb86b]/30 via-[#ff6a3d]/30 to-[#ffb86b]/30 rounded-xl flex items-center justify-center group-hover:bg-primary/40 transition-colors">
-                    <service.icon className="h-7 w-7 text-primary" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-semibold mb-2 text-white">{service.title}</h3>
-                  <p className="text-white/70 mb-4 leading-relaxed">{service.description}</p>
-                </div>
-              </div>
-              <div className="mt-2">
-                {service.demo}
-              </div>
-            </div>
-          ))}
+            Services
+            </button>
+          <h2 className="text-4xl md:text-7xl font-medium mb-6 text-white tracking-tight">Our Services</h2>
         </div>
+        <div className="grid md:grid-cols-2">
+ {services.map((service, index) => (
+   <div
+     key={service.title}
+     className={`bg-transparent border border-white/10 p-10 hover:shadow-2xl transition-all duration-300 group flex flex-col gap-6 ${
+       index % 2 === 1 ? 'md:border-r-0' : 'md:border-l-0'
+     }`}
+   >
+     <div className="flex items-start gap-6">
+       {/* <div className="flex-shrink-0"> */}
+         {/* <div className="w-14 h-14 bg-gradient-to-br from-[#ffb86b]/30 via-[#ff6a3d]/30 to-[#ffb86b]/30 rounded-xl flex items-center justify-center group-hover:bg-primary/40 transition-colors">
+           <service.icon className="h-7 w-7 text-primary" />
+         </div> */}
+       {/* </div> */}
+       <div className="flex-1">
+         <h3 className="text-4xl font-medium mb-2 text-white">{service.title}</h3>
+         <p className="text-white/70 mb-4 leading-relaxed">{service.description}</p>
+       </div>
+     </div>
+     <div className="mt-2">
+       {service.demo}
+     </div>
+   </div>
+ ))}
+</div>
       </div>
     </section>
   );

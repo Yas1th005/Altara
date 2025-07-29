@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { StarBorderDemo } from "./lib/MainButton";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,33 +37,35 @@ const Navigation = () => {
   return (
     <nav
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 w-[95vw] max-w-6xl z-50 rounded-2xl bg-black/10 backdrop-blur-lg shadow-lg",
+        "fixed top-4 left-1/2 -translate-x-1/2 w-[95vw] max-w-6xl z-50 rounded-lg bg-black/10 backdrop-blur-lg shadow-lg",
         isScrolled ? "scale-100" : "scale-100"
       )}
     >
-      <div className="flex justify-between items-center px-6 py-3">
+      <div className="flex justify-between items-center px-6 py-2">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Sparkles className="h-7 w-7 text-white" />
-          <span className="text-xl font-semibold text-white tracking-wide">Auralis</span>
+          <Sparkles className="h-4 w-4 text-white" />
+          <span className="text-sm font-semibold text-white tracking-wide">Auralis</span>
         </div>
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => scrollToSection(item.href)}
-              className="text-white text-base font-medium hover:text-white/80 transition-colors duration-200"
-            >
-              {item.name}
-            </button>
-          ))}
-        </div>
+<div className="hidden md:flex items-center space-x-9">
+  {navItems.map((item) => (
+    <button
+      key={item.name}
+      onClick={() => scrollToSection(item.href)}
+      className="text-white text-xs font-medium hover:text-white/80 transition-colors duration-200 relative group"
+    >
+      {item.name}
+      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#fc9850] to-white transition-all duration-500 group-hover:w-full"></span>
+    </button>
+  ))}
+</div>
         {/* CTA Button */}
         <div className="hidden md:flex">
-          <Button variant="cta" onClick={() => scrollToSection("#contact")} className="bg-black/70 border border-white/20 text-white hover:bg-white/10 px-6 py-2 rounded-lg font-semibold shadow">
+          {/* <Button variant="cta" onClick={() => scrollToSection("#contact")} className="bg-black/70 border border-white/20 text-white hover:bg-white/10 px-6 rounded-lg shadow text-xs">
             Get template
-          </Button>
+          </Button> */}
+          <StarBorderDemo/>
         </div>
         {/* Mobile menu button */}
         <div className="md:hidden">

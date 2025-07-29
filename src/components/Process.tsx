@@ -33,17 +33,16 @@ const Process = () => {
   ];
 
   return (
-    <section id="process" className="py-24 relative bg-transparent">
+    <section id="process" className="py-24 relative bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#ffb86b]/20 via-[#ff6a3d]/20 to-[#ffb86b]/20 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 shadow">
-            <Settings className="h-4 w-4" />
+      <div className="text-left mb-16">
+            <button 
+            // variant="outline" 
+            className="mb-4 border border-gray-100/10 rounded-[10px] py-1 px-2 bg-gradient-to-r from-orange-300 from-20% to-white bg-clip-text text-transparent hover:bg-white/10 text-sm"
+            >
             Process
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">Our process</h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            We start by analyzing your workflows to identify tasks AI can automate and optimize.
-          </p>
+            </button>
+          <h2 className="text-4xl md:text-7xl font-medium mb-6 text-white tracking-tight">Our Process</h2>
         </div>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Process steps */}

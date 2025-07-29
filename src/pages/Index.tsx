@@ -6,8 +6,11 @@ import Process from "@/components/Process";
 import Industries from "@/components/Industries";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
+import Team from "@/components/Team";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import FAQ from "@/components/FAQ";
+// import Footer from "@/components/Footer";
+import FooterDemo from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -20,10 +23,12 @@ const Index = () => {
       <Services />
       <Process />
       <Industries />
-      <Pricing />
+      {/* <Pricing /> */}
       <Testimonials />
+      {/* <Team /> */}
       <Contact />
-      <Footer />
+      <FAQ />
+      <FooterDemo />
     </div>
   );
 };
