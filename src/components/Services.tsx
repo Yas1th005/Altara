@@ -102,13 +102,12 @@ const Services = () => {
       title: "Voice Assistants",
       description: "We develop voice assistants that use advanced natural language processing (NLP) to handle inbound and outbound calls for support, scheduling, reminders, and promotions.",
       demo: (
-        <div className="bg-gradient-card border border-border/50 rounded-lg p-4">
-          <img 
-            src="/assets/2.png" 
+
+          <VideoThumbnail 
+            videoSrc="/assets/2.mp4" 
             alt="Voice Assistants" 
-            className="w-full h-auto rounded-lg object-cover"
+            // className="w-full h-auto rounded-lg object-cover"
           />
-        </div>
       )
     },
     {
@@ -116,13 +115,10 @@ const Services = () => {
       title: "Workflow Automations",
       description: "We streamline your processes with workflow automations that connect your favourite applications to eliminate repetitive tasks and enhance accuracy.",
       demo: (
-        <div className="bg-gradient-card border border-border/50 rounded-lg p-4">
-          <img 
-            src="/assets/3.png" 
-            alt="Workflow Automations" 
-            className="w-full h-auto rounded-lg object-cover"
-          />
-        </div>
+        <VideoThumbnail 
+          videoSrc="/assets/3.mp4"
+          alt="Workflow Automations"
+        />
       )
     },
     {
@@ -130,13 +126,10 @@ const Services = () => {
       title: "AI Consulting",
       description: "We dive into your organization to uncover AI-driven automation opportunities that can elevate your operational efficiency, quality, and speed, and reduce cost.",
       demo: (
-        <div className="bg-gradient-card border border-border/50 rounded-lg p-4">
-          <img 
-            src="/assets/4.png" 
-            alt="AI Consulting" 
-            className="w-full h-auto rounded-lg object-cover"
-          />
-        </div>
+        <VideoThumbnail 
+          videoSrc="/assets/4.mp4"
+          alt="AI Consulting"
+        />
       )
     }
   ];
