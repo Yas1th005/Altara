@@ -1,4 +1,88 @@
 import { MessageSquare, Mic, Workflow, Brain, BarChart3, MessageCircle } from "lucide-react";
+import { useRef, useState } from "react";
+
+// Video component with hover functionality
+const VideoThumbnail = ({ videoSrc, alt }: { videoSrc: string; alt: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const thumbnailRef = useRef<HTMLVideoElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const reverseIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      // Clear any existing reverse interval
+      if (reverseIntervalRef.current) {
+        clearInterval(reverseIntervalRef.current);
+        reverseIntervalRef.current = null;
+      }
+      videoRef.current.currentTime = 0;
+      videoRef.current.play();
+      setIsHovered(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      const currentTime = videoRef.current.currentTime;
+      const duration = videoRef.current.duration;
+      
+      // Play in reverse by decrementing currentTime
+      let time = currentTime;
+      reverseIntervalRef.current = setInterval(() => {
+        if (videoRef.current && time > 0) {
+          time -= 0.1; // Decrement by 0.1 seconds
+          videoRef.current.currentTime = Math.max(0, time);
+        } else {
+          if (reverseIntervalRef.current) {
+            clearInterval(reverseIntervalRef.current);
+            reverseIntervalRef.current = null;
+          }
+          if (videoRef.current) {
+            videoRef.current.currentTime = 0;
+          }
+          setIsHovered(false);
+        }
+      }, 50); // Update every 50ms for smooth reverse playback
+    }
+  };
+
+  return (
+    <div 
+      className="bg-gradient-card border border-border/50 rounded-lg p-4"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="relative overflow-hidden rounded-lg">
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          className={`w-full h-auto rounded-lg object-cover transition-opacity duration-300 ${
+            isHovered ? 'opacity-100' : 'opacity-0'
+          }`}
+          muted
+          playsInline
+          preload="metadata"
+        />
+        <video 
+          ref={thumbnailRef}
+          src={videoSrc}
+          className={`w-full h-auto rounded-lg object-cover absolute inset-0 transition-opacity duration-300 ${
+            isHovered ? 'opacity-0' : 'opacity-100'
+          }`}
+          muted
+          playsInline
+          preload="metadata"
+          onLoadedData={() => {
+            if (thumbnailRef.current) {
+              thumbnailRef.current.currentTime = 0;
+            }
+          }}
+        />
+      </div>
+    </div>
+  );
+};
 
 const Services = () => {
   const services = [
@@ -7,13 +91,10 @@ const Services = () => {
       title: "Chatbot Development",
       description: "We develop advanced AI-driven chatbots that handle repetitive tasks, manage data, and streamline your internal workflows to drive real results for your business.",
       demo: (
-        <div className="bg-gradient-card border border-border/50 rounded-lg p-4">
-          <img 
-            src="/assets/1.png" 
-            alt="Chatbot Development" 
-            className="w-full h-auto rounded-lg object-cover"
-          />
-        </div>
+        <VideoThumbnail 
+          videoSrc="/assets/1.mp4"
+          alt="Chatbot Development"
+        />
       )
     },
     {
