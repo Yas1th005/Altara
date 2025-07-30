@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="h-[100vh] flex items-center justify-center relative overflow-hidden pt-40 bg-black">
+    <section className="h-[80vh] flex items-center justify-center relative overflow-hidden pt-40 bg-black">
       {/* Main dark background */}
       <div className="absolute inset-0 bg-black" />
       
@@ -47,7 +47,7 @@ const Hero = () => {
           <p className="text-xl md:text-sm text-white/80 mb-12 max-w-xl mx-auto font-medium">
             We elevate and grow organizations using top-tier Artificial Intelligence solutions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
             {/* <Button 
               variant="outline" 
               size="lg"
@@ -69,12 +69,12 @@ const Hero = () => {
             <StarBorderDemo/>
           </div>
           {/* Client logos */}
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <p className="text-white/60 text-sm font-light">You're in good company</p>
             <div className="flex items-center justify-center space-x-12 opacity-40">
               <Infinite/>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

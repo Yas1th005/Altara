@@ -11,14 +11,16 @@ import Contact from "@/components/Contact";
 import FAQ from "@/components/FAQ";
 // import Footer from "@/components/Footer";
 import FooterDemo from "@/components/Footer";
+import { HeroScrollDemo } from "@/components/Calculator";
 
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       {/* Subtle, site-wide background gradient */}
-      <div className="fixed inset-0 -z-10 pointer-events-none" style={{background: 'radial-gradient(ellipse at 80% 40%, #ff6a3d11 0%, #18181b 80%, #18181b 100%)'}} />
+      <div className="fixed inset-0 -z-10 pointer-events-none bg-black" />
       <Navigation />
-      <Hero />
+      {/* <Hero /> */}
+      <HeroScrollDemo/>
       <About />
       <Services />
       <Process />
