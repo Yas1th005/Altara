@@ -4,51 +4,43 @@ import { useRef, useState } from "react";
 // Video component with hover functionality
 const VideoThumbnail = ({ videoSrc, alt }: { videoSrc: string; alt: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const thumbnailRef = useRef<HTMLVideoElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const reverseIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
+    if (reverseIntervalRef.current) {
+      clearInterval(reverseIntervalRef.current);
+      reverseIntervalRef.current = null;
+    }
     if (videoRef.current) {
-      // Clear any existing reverse interval
-      if (reverseIntervalRef.current) {
-        clearInterval(reverseIntervalRef.current);
-        reverseIntervalRef.current = null;
-      }
       videoRef.current.currentTime = 0;
       videoRef.current.play();
-      setIsHovered(true);
     }
   };
 
   const handleMouseLeave = () => {
+    if (reverseIntervalRef.current) {
+      clearInterval(reverseIntervalRef.current);
+      reverseIntervalRef.current = null;
+    }
     if (videoRef.current) {
       videoRef.current.pause();
-      const currentTime = videoRef.current.currentTime;
-      const duration = videoRef.current.duration;
       
-      // Play in reverse by decrementing currentTime
-      let time = currentTime;
       reverseIntervalRef.current = setInterval(() => {
-        if (videoRef.current && time > 0) {
-          time -= 0.1; // Decrement by 0.1 seconds
-          videoRef.current.currentTime = Math.max(0, time);
-        } else {
-          if (reverseIntervalRef.current) {
+        if (videoRef.current) {
+          if (videoRef.current.currentTime > 0.1) {
+            videoRef.current.currentTime -= 0.1; // Larger step
+          } else {
+            videoRef.current.currentTime = 0;
             clearInterval(reverseIntervalRef.current);
             reverseIntervalRef.current = null;
           }
-          if (videoRef.current) {
-            videoRef.current.currentTime = 0;
-          }
-          setIsHovered(false);
         }
-      }, 50); // Update every 50ms for smooth reverse playback
+      }, 50); // Consistent 50ms interval
     }
   };
 
   return (
-    <div 
+    <div
       className="bg-gradient-card border border-border/50 rounded-lg p-4"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -57,27 +49,10 @@ const VideoThumbnail = ({ videoSrc, alt }: { videoSrc: string; alt: string }) =>
         <video
           ref={videoRef}
           src={videoSrc}
-          className={`w-full h-auto rounded-lg object-cover transition-opacity duration-300 ${
-            isHovered ? 'opacity-100' : 'opacity-0'
-          }`}
+          className="w-full h-auto rounded-lg object-cover"
           muted
           playsInline
           preload="metadata"
-        />
-        <video 
-          ref={thumbnailRef}
-          src={videoSrc}
-          className={`w-full h-auto rounded-lg object-cover absolute inset-0 transition-opacity duration-300 ${
-            isHovered ? 'opacity-0' : 'opacity-100'
-          }`}
-          muted
-          playsInline
-          preload="metadata"
-          onLoadedData={() => {
-            if (thumbnailRef.current) {
-              thumbnailRef.current.currentTime = 0;
-            }
-          }}
         />
       </div>
     </div>
@@ -102,12 +77,17 @@ const Services = () => {
       title: "Voice Assistants",
       description: "We develop voice assistants that use advanced natural language processing (NLP) to handle inbound and outbound calls for support, scheduling, reminders, and promotions.",
       demo: (
-
-          <VideoThumbnail 
-            videoSrc="/assets/2.mp4" 
-            alt="Voice Assistants" 
-            // className="w-full h-auto rounded-lg object-cover"
+        <div className="bg-gradient-card border border-border/50 rounded-lg p-4">
+          <video
+            src="/assets/2.mp4"
+            className="w-full h-auto rounded-lg object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
           />
+        </div>
       )
     },
     {
