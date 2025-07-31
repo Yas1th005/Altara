@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="h-[80vh] flex items-center justify-center relative overflow-hidden pt-40 bg-black">
+    <section className="h-fit flex items-center justify-center relative overflow-hidden pt-40 bg-black">
       {/* Main dark background */}
       <div className="absolute inset-0 bg-black" />
       

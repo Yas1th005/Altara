@@ -1,32 +1,48 @@
-"use client";
+import AboutUsSection from "./lib/industry";
 
-import DatabaseWithRestApi from "./lib/rest_api";
-
-export default function Industries() {
-  return (
-    // <div className="p-4 rounded-xl bg-accent/20 w-full">
-    //   <DatabaseWithRestApi />
-    // </div>
-
-    <section id="industries" className="py-24 relative bg-black flex justify-center items-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="text-center mb-16">
-        <button 
-        // variant="outline" 
-        className="mb-4 border border-gray-100/10 rounded-[10px] py-1 px-2 bg-gradient-to-r from-orange-300 from-20% to-white bg-clip-text text-transparent hover:bg-white/10 text-sm"
-        >
-        Industries
-        </button>
-        <h2 className="text-4xl md:text-7xl font-medium mb-6 text-white tracking-tight">Industries we work with</h2>
-        <p className="text-xl md:text-sm text-white/80 mb-12 max-w-2xl mx-auto font-normal ">
-        Hear the success stories of the businesses we’ve helped thrive with AI. We work with a variety of different industries.
-        </p>
-      </div>
-      <DatabaseWithRestApi />
-      </div>
-    </section>
-  );
+function Industry() {
+  return <AboutUsSection />;
 };
+
+export default Industry;
+
+
+
+
+
+
+
+
+
+// "use client";
+
+// import DatabaseWithRestApi from "./lib/rest_api";
+
+// export default function Industries() {
+//   return (
+//     // <div className="p-4 rounded-xl bg-accent/20 w-full">
+//     //   <DatabaseWithRestApi />
+//     // </div>
+
+//     <section id="industries" className="py-24 relative bg-black flex justify-center items-center">
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      // <div className="text-center mb-16">
+      //   <button 
+      //   // variant="outline" 
+      //   className="mb-4 border border-gray-100/10 rounded-[10px] py-1 px-2 bg-gradient-to-r from-orange-300 from-20% to-white bg-clip-text text-transparent hover:bg-white/10 text-sm"
+      //   >
+      //   Industries
+      //   </button>
+      //   <h2 className="text-4xl md:text-7xl font-medium mb-6 text-white tracking-tight">Industries we work with</h2>
+      //   <p className="text-xl md:text-sm text-white/80 mb-12 max-w-2xl mx-auto font-normal ">
+      //   Hear the success stories of the businesses we’ve helped thrive with AI. We work with a variety of different industries.
+      //   </p>
+      // </div>
+//       <DatabaseWithRestApi />
+//       </div>
+//     </section>
+//   );
+// };
 
 
 
