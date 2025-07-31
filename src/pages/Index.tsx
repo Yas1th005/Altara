@@ -15,9 +15,9 @@ import { HeroScrollDemo } from "@/components/Calculator";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden scrollbar-hide">
       {/* Subtle, site-wide background gradient */}
-      <div className="fixed inset-0 -z-10 pointer-events-none bg-black" />
+      <div className="fixed inset-0 -z-10 pointer-events-none bg-black scrollbar-hide" />
       <Navigation />
       {/* <Hero /> */}
       <HeroScrollDemo/>

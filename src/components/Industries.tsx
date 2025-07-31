@@ -1,7 +1,7 @@
 import AboutUsSection from "./lib/industry";
 
 function Industry() {
-  return <AboutUsSection />;
+  return <div id="industries"><AboutUsSection/></div>;
 };
 
 export default Industry;

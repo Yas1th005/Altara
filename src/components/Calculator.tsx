@@ -72,13 +72,13 @@ export function HeroScrollDemo() {
         }
       >
         {/* Frost Glass Container with Compact Design */}
-        <div className="w-full max-w-6xl mx-auto bg-white/10 backdrop-blur-md border border-gray-300/30 rounded-2xl shadow-2xl overflow-hidden p-2">
+        <div className="w-full max-w-6xl mx-auto bg-white/10 backdrop-blur-md border border-gray-300/30 rounded-2xl shadow-2xl overflow-hidden p-2 mt-20">
           {/* macOS Window - More Compact */}
-          <div className="w-full h-[600px] bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-gray-700/50">
+          <div className="w-full h-[600px] bg-black backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-gray-700/50">
             {/* Title Bar - Reduced Height */}
-            <div className="h-10 bg-gray-900/90 backdrop-blur-sm flex items-center justify-between px-4 border-b border-gray-700/50">
+            <div className="h-10 bg-black backdrop-blur-sm flex items-center justify-between px-4 border-b border-gray-700/50">
               {/* Traffic Light Buttons */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 ">
                 <button className="w-2.5 h-2.5 bg-red-500 rounded-full hover:bg-red-600 flex items-center justify-center group">
                   <X className="w-1.5 h-1.5 text-red-800 opacity-0 group-hover:opacity-100" />
                 </button>
@@ -97,7 +97,7 @@ export function HeroScrollDemo() {
             </div>
 
             {/* Tab Bar - Reduced Height */}
-            <div className="h-8 bg-gray-900/90 backdrop-blur-sm flex items-center px-4 border-b border-gray-700/50">
+            <div className="h-8 bg-black backdrop-blur-sm flex items-center px-4 border-b border-gray-700/50">
               <div className="flex space-x-1">
                 {tabs.map((tab) => (
                   <button
@@ -105,14 +105,14 @@ export function HeroScrollDemo() {
                     onClick={() => setActiveTab(tab)}
                     className={`px-2 py-1 text-xs rounded-md transition-colors ${
                       activeTab === tab
-                        ? 'bg-gray-800/80 text-white shadow-sm border border-gray-600/50'
-                        : 'text-gray-400 hover:text-white hover:bg-gray-800/60'
+                        ? 'bg-black text-white shadow-sm border border-gray-600/50'
+                        : 'text-gray-400 hover:text-white hover:bg-black'
                     }`}
                   >
                     {tab}
                   </button>
                 ))}
-                <button className="ml-2 w-5 h-5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-gray-800/60 rounded">
+                <button className="ml-2 w-5 h-5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-black rounded">
                   <Plus className="w-2.5 h-2.5" />
                 </button>
               </div>
@@ -121,7 +121,7 @@ export function HeroScrollDemo() {
             {/* Main Content Area - Adjusted Height */}
             <div className="flex h-[calc(100%-4.5rem)]">
               {/* Sidebar - Reduced Width */}
-              <div className="w-48 bg-gray-900/80 backdrop-blur-sm border-r border-gray-700/50 p-3">
+              <div className="w-48 bg-black backdrop-blur-sm border-r border-gray-700/50 p-3">
                 <div className="space-y-1">
                   {sidebarItems.map((item) => {
                     const Icon = item.icon;
@@ -143,8 +143,8 @@ export function HeroScrollDemo() {
               </div>
 
               {/* Main Content - Compact ROI Calculator */}
-              <div className="flex-1 p-4 bg-gray-800/60 backdrop-blur-sm">
-                <div className="h-full w-full bg-gray-900/70 backdrop-blur-sm border border-gray-700/50 rounded-lg p-4 flex flex-col">
+              <div className="flex-1 p-4 bg-black backdrop-blur-sm">
+                <div className="h-full w-full bg-black backdrop-blur-sm border border-gray-700/50 rounded-lg p-4 flex flex-col">
                   <div className="text-center mb-4">
                     <button className="mb-2 border border-gray-600/50 rounded-lg py-0.5 px-2 bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent hover:bg-gray-700/50 text-xs font-medium">
                       ROI Potential
@@ -170,7 +170,7 @@ export function HeroScrollDemo() {
                             value={formData.monthlyHours}
                             onChange={(e) => handleInputChange('monthlyHours', parseInt(e.target.value) || 0)}
                             placeholder="e.g., 500"
-                            className="w-full h-7 rounded-md border border-gray-600/50 bg-gray-800/80 backdrop-blur-sm px-2 text-xs text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                            className="w-full h-7 rounded-md border border-gray-600/50 bg-black backdrop-blur-sm px-2 text-xs text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-all"
                           />
                           <p className="text-xs text-gray-500">Total hours spent on manual tasks monthly</p>
                         </div>
@@ -183,7 +183,7 @@ export function HeroScrollDemo() {
                             value={formData.hourlyCost}
                             onChange={(e) => handleInputChange('hourlyCost', parseInt(e.target.value) || 0)}
                             placeholder="e.g., 50"
-                            className="w-full h-7 rounded-md border border-gray-600/50 bg-gray-800/80 backdrop-blur-sm px-2 text-xs text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                            className="w-full h-7 rounded-md border border-gray-600/50 bg-black backdrop-blur-sm px-2 text-xs text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-all"
                           />
                           <p className="text-xs text-gray-500">Including salary, benefits, and overhead costs</p>
                         </div>
@@ -196,7 +196,7 @@ export function HeroScrollDemo() {
                             value={formData.errorRate}
                             onChange={(e) => handleInputChange('errorRate', parseInt(e.target.value) || 0)}
                             placeholder="e.g., 5"
-                            className="w-full h-7 rounded-md border border-gray-600/50 bg-gray-800/80 backdrop-blur-sm px-2 text-xs text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                            className="w-full h-7 rounded-md border border-gray-600/50 bg-black backdrop-blur-sm px-2 text-xs text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-all"
                           />
                           <p className="text-xs text-gray-500">Percentage of tasks requiring rework or correction</p>
                         </div>
@@ -215,7 +215,7 @@ export function HeroScrollDemo() {
                       <h3 className="text-xs font-semibold text-white mb-2 border-b border-gray-700/50 pb-1">Projected Results</h3>
                       
                       <div className="space-y-2">
-                        <div className="bg-gray-800/70 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
+                        <div className="bg-black backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
                           <div className="flex justify-between items-center">
                             <div>
                               <span className="text-gray-300 font-medium text-xs block">Monthly Time Savings</span>
@@ -225,7 +225,7 @@ export function HeroScrollDemo() {
                           </div>
                         </div>
 
-                        <div className="bg-gray-800/70 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
+                        <div className="bg-black backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
                           <div className="flex justify-between items-center">
                             <div>
                               <span className="text-gray-300 font-medium text-xs block">Monthly Cost Reduction</span>
@@ -235,7 +235,7 @@ export function HeroScrollDemo() {
                           </div>
                         </div>
 
-                        <div className="bg-gray-800/70 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
+                        <div className="bg-black backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
                           <div className="flex justify-between items-center">
                             <div>
                               <span className="text-gray-300 font-medium text-xs block">Annual ROI</span>
@@ -245,7 +245,7 @@ export function HeroScrollDemo() {
                           </div>
                         </div>
 
-                        <div className="bg-gray-800/70 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
+                        <div className="bg-black backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
                           <div className="flex justify-between items-center">
                             <div>
                               <span className="text-gray-300 font-medium text-xs block">Payback Period</span>

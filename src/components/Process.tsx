@@ -55,7 +55,7 @@ const content = [
 
 export default function Process() {
   return (
-    <div className="h-[100vh]">
+    <div id="process" className="h-[100vh]">
       <StickyScroll content={content} />
     </div>
   );

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "./button";
 import { Input } from "./input";
 import { Label } from "./label";
 import { Textarea } from "./textarea";
+import { sendContactEmail } from "../../lib/email";
 
 interface Contact2Props {
   title?: string;
@@ -20,8 +21,46 @@ export const Contact2 = ({
   email = "email@example.com",
   web = { label: "shadcnblocks.com", url: "https://shadcnblocks.com" },
 }: Contact2Props) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.id]: e.target.value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await sendContactEmail(formData);
+      alert('Message sent successfully! Our team Altara will contact you soon.');
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <section className="py-32 bg-black">
+    <section id="contact" className="py-32 bg-black">
       <div className="container">
         <div className="mx-auto flex max-w-screen-xl flex-col justify-between gap-10 lg:flex-row lg:gap-20">
           <div className="mx-auto flex max-w-sm flex-col justify-between gap-10">
@@ -61,31 +100,67 @@ export const Contact2 = ({
               </ul>
             </div>
           </div>
-          <div className="mx-auto flex max-w-screen-md flex-col gap-6 rounded-lg border border-white/10 p-10">
+          <form onSubmit={handleSubmit} className="mx-auto flex max-w-screen-md flex-col gap-6 rounded-lg border border-white/10 p-10">
             <div className="flex gap-4">
               <div className="grid w-full items-center gap-1.5">
-                <Label htmlFor="firstname">First Name</Label>
-                <Input type="text" id="firstname" placeholder="First Name" />
+                <Label htmlFor="firstName">First Name</Label>
+                <Input 
+                  type="text" 
+                  id="firstName" 
+                  placeholder="First Name" 
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               <div className="grid w-full items-center gap-1.5">
-                <Label htmlFor="lastname">Last Name</Label>
-                <Input type="text" id="lastname" placeholder="Last Name" />
+                <Label htmlFor="lastName">Last Name</Label>
+                <Input 
+                  type="text" 
+                  id="lastName" 
+                  placeholder="Last Name" 
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
             </div>
             <div className="grid w-full items-center gap-1.5">
               <Label htmlFor="email">Email</Label>
-              <Input type="email" id="email" placeholder="Email" />
+              <Input 
+                type="email" 
+                id="email" 
+                placeholder="Email" 
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
             </div>
             <div className="grid w-full items-center gap-1.5">
               <Label htmlFor="subject">Subject</Label>
-              <Input type="text" id="subject" placeholder="Subject" />
+              <Input 
+                type="text" 
+                id="subject" 
+                placeholder="Subject" 
+                value={formData.subject}
+                onChange={handleInputChange}
+                required
+              />
             </div>
             <div className="grid w-full gap-1.5">
               <Label htmlFor="message">Message</Label>
-              <Textarea placeholder="Type your message here." id="message" />
+              <Textarea 
+                placeholder="Type your message here." 
+                id="message" 
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              />
             </div>
-            <Button className="w-full">Send Message</Button>
-          </div>
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </Button>
+          </form>
         </div>
       </div>
     </section>
